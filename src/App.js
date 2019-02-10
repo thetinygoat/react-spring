@@ -1,28 +1,17 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
-
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+import React from 'react';
+import { useSpring, animated, useSprings } from 'react-spring';
+const App = () => {
+	let items = ['sachin', 'saini'];
+	const springs = useSprings(
+		10,
+		items.map(item => ({
+			opacity: 1,
+			height: '100px',
+			backgroundColor: 'blue',
+			padding: '10px'
+		}))
+	);
+	return springs.map(props => <animated.div style={props} />);
+};
 
 export default App;
